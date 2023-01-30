@@ -1,0 +1,11 @@
+{% extends 'my_site/base.html' %}
+
+{% block content %}
+
+<form action="/change/{{publication.id}}" method="post">
+    <input name="title" placeholder="Введите название публикации" value="{{publication.title}}" required>
+    <input name="content" type="text" placeholder="Введите содержание" value="{{publication.content}}" required>
+    <button type="submit">Отправить</button>
+</form>
+
+{% endblock content %}

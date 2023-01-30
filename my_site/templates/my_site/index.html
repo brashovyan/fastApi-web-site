@@ -1,0 +1,28 @@
+{% extends 'my_site/base.html' %}
+
+{% block content %}
+
+<p>{{ request.client }}</p>
+
+<h1>Сделайте свою публикацаю</h1>
+
+<form action="{{ url_for('add_post') }}" method="post">
+    <input name="title" placeholder="Введите название публикации" required>
+    <input name="content" type="text" placeholder="Введите содержание" required>
+    <button type="submit">Отправить</button>
+</form>
+
+<h1>Если есть публикации, они находятся ниже</h1>
+<hr>
+
+{% for publication in publications %}
+    <h2>{{publication.title}}</h2>
+    <p>{{publication.content}}</p>
+    <a href="delete/{{publication.id}}">Удалить</a>
+    <a href="change/{{publication.id}}">Изменить</a>
+    <br>
+    <br>
+{% endfor %}
+
+
+{% endblock content %}
